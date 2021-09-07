@@ -43,7 +43,7 @@ namespace _24Hr.Services
                 {
                     PostId = p.PostId,
                     Title = p.Title,
-                    // Text = p.Text, // Inlcude text? Would need to update PostListItem.cs to include. Consult w/ team
+                    Text = p.Text,
                     CreatedUtc = p.CreatedUtc
                 });
                 return query.ToArray();
