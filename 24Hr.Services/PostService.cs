@@ -34,5 +34,20 @@ namespace _24Hr.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        public IEnumerable<PostListItem> GetPosts()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx.Posts.Where(p => p.AuthorId == _userId).Select(p => new PostListItem
+                {
+                    PostId = p.PostId,
+                    Title = p.Title,
+                    // Text = p.Text, // Inlcude text? Would need to update PostListItem.cs to include. Consult w/ team
+                    CreatedUtc = p.CreatedUtc
+                });
+                return query.ToArray();
+            }
+        }
     }
 }
