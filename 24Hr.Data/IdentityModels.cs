@@ -33,11 +33,12 @@ namespace _24Hr.Data
         }
         public DbSet<Comment> Comments { get; set; }
 
-    public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
-    {
-        public IdentityUserLoginConfiguration()
+        public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
         {
-            HasKey(iul => iul.UserId);
+            public IdentityUserLoginConfiguration()
+            {
+                HasKey(iul => iul.UserId);
+            }
         }
     }
 }
