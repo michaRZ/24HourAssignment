@@ -12,7 +12,6 @@ namespace _24Hr.Data
     {
         [Key]
         public int CommentId { get; set; }
-        /*[ForeignKey nameof(]*/
         public int PostId { get; set; }
         [Required]
         //display the author name using GUID ***UNIMPLEMENTED***
