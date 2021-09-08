@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace _24Hr.Data
 {
+    //Delete this comment
     public class CommentListItem
     {
         public int CommentId { get; set; }

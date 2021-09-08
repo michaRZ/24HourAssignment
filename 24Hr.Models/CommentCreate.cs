@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace _24Hr.Data
 {
+    //This comment is to be deleted
     public class CommentCreate
     {
         [Required]
