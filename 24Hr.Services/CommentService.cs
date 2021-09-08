@@ -8,6 +8,7 @@ using System.Web.Http;
 
 namespace _24Hr.Services
 {
+    //does this work-test
     public class CommentService
     {
         private readonly Guid _userId;
@@ -22,7 +23,6 @@ namespace _24Hr.Services
             var entity = new Comment()
             {
                 AuthorId = _userId,
-                PostId = model.PostId,
                 Contents = model.Content,
                 CreatedUtc = DateTimeOffset.Now
             };
