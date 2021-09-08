@@ -1,4 +1,6 @@
-﻿using _24Hr.Services;
+﻿using _24Hr.Data;
+using _24Hr.Models;
+using _24Hr.Services;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -39,5 +41,40 @@ namespace _24Hr.WebAPI.Controllers
             return Ok(comments);
         }
 
+        public IHttpActionResult PostComment([FromUri] int postId, [FromBody]CommentCreate comment)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            var service = CreateCommentService();
+
+            if (!service.CreateComment(comment))
+            {
+                return InternalServerError();
+            }
+            return Ok();
+        }
+        public IHttpActionResult PutComment(CommentEdit comment)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateCommentService();
+
+            if (!service.EditComment(comment))
+                return InternalServerError();
+
+            return Ok();
+        }
+        public IHttpActionResult DeleteComment(int id)
+        {
+            var service = CreateCommentService();
+
+            if (!service.DeleteComment(id))
+                return InternalServerError();
+
+            return Ok();
+        }
     }
 }
