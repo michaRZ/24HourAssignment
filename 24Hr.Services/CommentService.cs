@@ -22,7 +22,6 @@ namespace _24Hr.Services
             var entity = new Comment()
             {
                 AuthorId = _userId,
-                PostId = model.PostId,
                 Contents = model.Content,
                 CreatedUtc = DateTimeOffset.Now
             };

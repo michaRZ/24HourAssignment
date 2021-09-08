@@ -30,7 +30,7 @@ namespace _24Hr.Services
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Reply.Add(entity);
+                ctx.Replies.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
@@ -43,7 +43,7 @@ namespace _24Hr.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Reply.Where(p => p.AuthorId == _userId).Select(p => new ReplyListItem
+                var query = ctx.Replies.Where(p => p.AuthorId == _userId).Select(p => new ReplyListItem
                 {
                     ReplyId = p.ReplyId,
                     Text = p.Text,
