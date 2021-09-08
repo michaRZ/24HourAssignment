@@ -1,4 +1,5 @@
 ﻿using _24Hr.Data;
+using _24Hr.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Web.Http;
 
 namespace _24Hr.Services
 {
+    //does this work-test
     public class CommentService
     {
         private readonly Guid _userId;
@@ -50,6 +52,36 @@ namespace _24Hr.Services
                         }
                     );
                 return query.ToArray();
+            }
+        }
+
+        public bool EditComment(CommentEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Comments
+                        .Single(e => e.CommentId == model.CommentId && e.AuthorId == _userId);
+
+                entity.Contents = model.Contents;
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool DeleteComment(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Comments
+                        .Single(e => e.CommentId == id && e.AuthorId == _userId);
+
+                ctx.Comments.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
             }
         }
 
