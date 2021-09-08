@@ -18,7 +18,14 @@ namespace _24Hr.Data
         [Required]
         public Guid AuthorId { get; set; }
         //public virtual List<Comment> Comments { get; set; } = new List<Comment>();
-
+        /*public int NumberOfComments
+        {
+            get
+            {
+                return Comments.Count;
+            }
+        }*/
+        
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }

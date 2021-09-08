@@ -44,6 +44,7 @@ namespace _24Hr.Services
                     PostId = p.PostId,
                     Title = p.Title,
                     Text = p.Text,
+                    //NumComments = p.Comments.Count(),
                     CreatedUtc = p.CreatedUtc
                 });
                 return query.ToArray();
