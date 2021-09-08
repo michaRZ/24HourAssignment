@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity.Owin;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity;
 
+
 namespace _24Hr.Data
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
@@ -37,7 +38,7 @@ namespace _24Hr.Data
 
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
-
+        public object Reply { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
@@ -47,6 +48,7 @@ namespace _24Hr.Data
 
     }
 
+
     public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
     {
         public IdentityUserLoginConfiguration()
@@ -54,7 +56,6 @@ namespace _24Hr.Data
             HasKey(iul => iul.UserId);
         }
     }
-
     public class IdentityUserRoleConfiguration : EntityTypeConfiguration<IdentityUserRole>
     {
         public IdentityUserRoleConfiguration()
