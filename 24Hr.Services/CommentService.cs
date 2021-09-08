@@ -45,12 +45,34 @@ namespace _24Hr.Services
                         e => new CommentListItem
                         {
                             CommentId = e.CommentId,
-                            PostId=e.PostId,
-                            Contents=e.Contents,
-                            AuthorId=e.AuthorId,
-                            CreatedUtc=e.CreatedUtc
+                            PostId = e.PostId,
+                            Contents = e.Contents,
+                            AuthorId = e.AuthorId,
+                            CreatedUtc = e.CreatedUtc
                         }
                     );
+                return query.ToArray();
+            }
+        }
+        public IEnumerable<CommentListItem> GetCommentsByPost(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx.Comments
+                    .Where(e => e.PostId == id)
+                    .Select
+                    (
+                    e => new CommentListItem
+                    {
+
+                        CommentId = e.CommentId,
+                        PostId = e.PostId,
+                        Contents = e.Contents,
+                        AuthorId = e.AuthorId,
+                        CreatedUtc = e.CreatedUtc
+                    }
+                    );
+
                 return query.ToArray();
             }
         }
