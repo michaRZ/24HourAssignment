@@ -19,7 +19,7 @@ namespace _24Hr.WebAPI.Controllers
             var replyService = new ReplyService(userId);
             return replyService;
         }
-        //get comment by id not all
+        
         public IHttpActionResult Get()
         {
             ReplyService postService = CreateReplyService();
@@ -27,7 +27,8 @@ namespace _24Hr.WebAPI.Controllers
             return Ok(replies);
         }
 
-        //using foreign key relationshop?
+       
+
         public IHttpActionResult Reply(ReplyCreate reply)
         {
             if (!ModelState.IsValid)
@@ -40,6 +41,8 @@ namespace _24Hr.WebAPI.Controllers
 
             return Ok();
         }
+
+
 
     }
 }

@@ -52,6 +52,25 @@ namespace _24Hr.Services
                 return query.ToArray();
             }
         }
+
+        public IEnumerable<ReplyListItem> GetReplyByComment(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx.Replies
+                    .Where(p => p.CommentId == id)
+                    .Select
+                    (
+                    p => new ReplyListItem
+                    {
+                        ReplyId = p.ReplyId,
+                        Text = p.Text,
+                        CreatedUtc = p.CreatedUtc
+                    }
+                    );
+                return query.ToArray();
+            }
+        }
         
     }
 
