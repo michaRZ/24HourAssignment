@@ -5,9 +5,6 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using System.Data.Entity.ModelConfiguration;
-using System.Data.Entity;
 
 
 namespace _24Hr.Data
@@ -38,7 +35,7 @@ namespace _24Hr.Data
 
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        public object Reply { get; set; }
+        public DbSet<Reply> Replies { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

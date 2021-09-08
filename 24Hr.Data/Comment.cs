@@ -23,6 +23,7 @@ namespace _24Hr.Data
         public string Contents { get; set; }
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
 
     }
 }

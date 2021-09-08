@@ -41,10 +41,13 @@ namespace _24Hr.Services
             {
                 var query = ctx.Posts.Where(p => p.AuthorId == _userId).Select(p => new PostListItem
                 {
+                    AuthorId = p.AuthorId,
                     PostId = p.PostId,
                     Title = p.Title,
                     Text = p.Text,
-                    CreatedUtc = p.CreatedUtc
+                    CreatedUtc = p.CreatedUtc,
+                    NumberOfComments = p.Comments.Count,
+                    // comments shown by PostId
                 });
                 return query.ToArray();
             }
