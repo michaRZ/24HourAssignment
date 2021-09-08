@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace _24Hr.Services
 {
@@ -31,5 +32,27 @@ namespace _24Hr.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+        public IEnumerable<CommentListItem> GetCommentsByAuthor()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx
+                    .Comments
+                    .Where(e => e.AuthorId == _userId)
+                    .Select
+                    (
+                        e => new CommentListItem
+                        {
+                            CommentId = e.CommentId,
+                            PostId=e.PostId,
+                            Contents=e.Contents,
+                            AuthorId=e.AuthorId,
+                            CreatedUtc=e.CreatedUtc
+                        }
+                    );
+                return query.ToArray();
+            }
+        }
+
     }
 }

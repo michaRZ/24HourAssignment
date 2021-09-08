@@ -10,7 +10,6 @@ namespace _24Hr.Data
 {
     public class CommentCreate
     {
-        public int PostId { get; set; }
         [Required]
         [MaxLength(5000, ErrorMessage ="Too many characters.")]
         public string Content { get; set; }
